@@ -131,6 +131,6 @@ class UserDB:
             async with db_conn.connection() as connection:
                 await connection.execute(query, user_id, role)
         except Exception as e:
-            raise DatabaseError(f"Error removing role from user: {str(e)})")
+            raise DatabaseError(f"Error removing role from user: {str(e)}")
 
 userdb = UserDB()

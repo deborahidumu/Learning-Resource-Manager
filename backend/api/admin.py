@@ -20,7 +20,7 @@ async def add_role_to_user(
         await userdb.add_role_to_user(user_id, role)
         return {"status": "success", "message": f"Role {role} added to user {user_id} successfully"}
     except Exception as e:
-        logging.error(f"Unexpected error during role removal: {str(e)}", exc_info=True)
+        logging.error(f"Unexpected error during role addition: {str(e)}", exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="An unexpected error occurred during login",
@@ -36,7 +36,7 @@ async def remove_role_from_user(
         await userdb.remove_role_from_user(user_id, role)
         return {"status": "success", "message": f"Role {role} removed from user {user_id} successfully"}
     except Exception as e:
-        logging.error(f"Unexpected error during login: {str(e)}", exc_info=True)
+        logging.error(f"Unexpected error during role removal: {str(e)}", exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="An unexpected error occurred during role removal",
