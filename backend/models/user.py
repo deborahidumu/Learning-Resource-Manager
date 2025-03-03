@@ -1,10 +1,18 @@
 from pydantic import BaseModel, field_validator, ValidationInfo
 import re
+from enum import Enum
+from typing import List
+
+
+class UserRole(str, Enum):
+    ADMIN = 'admin'
+    USER =  'user'
 
 class User(BaseModel):
     id: int
     username: str
     email: str | None = None
+    roles: List[UserRole] = [UserRole.USER]
 
 class UserWithPassword(User):
     hashed_password: str

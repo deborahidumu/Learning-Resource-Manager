@@ -1,5 +1,5 @@
 # backend/main.py
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
@@ -7,6 +7,8 @@ from contextlib import asynccontextmanager
 from pydantic import ValidationError
 
 from api.auth import router as auth_router
+from api.admin import router as admin_router
+from core.security import admin_required
 from db.conn import db_conn
 
 
@@ -81,3 +83,4 @@ async def http_exception_handler(request: Request, exc: HTTPException):
 
 
 app.include_router(auth_router, tags=["Auth"])
+app.include_router(admin_router, tags=["Admin"], dependencies=[Depends(admin_required)])

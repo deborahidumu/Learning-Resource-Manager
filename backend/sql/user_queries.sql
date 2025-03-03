@@ -4,3 +4,5 @@ CREATE TABLE users (
 	username TEXT NOT NULL,
 	password TEXT NOT NULL
 );
+
+ALTER TABLE users ADD COLUMN roles TEXT[] DEFAULT '{"user"}'::TEXT[];
