@@ -1,6 +1,7 @@
 import logging
 from datetime import timedelta
 from typing import Annotated
+
 from fastapi import Depends, APIRouter, HTTPException, status, Form
 from fastapi.security import OAuth2PasswordRequestForm
 
